@@ -7,7 +7,7 @@ from src.parser import parse
 app = Flask(__name__)
 FlaskJSON(app)
 
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'x5txPHff9PWF38xI41v4MS85JyjcY84r')
 
 ###
 # Routing for your application.
