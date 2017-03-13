@@ -18,9 +18,5 @@ def home():
     query = request.args.get('q')
     return json_response(result = parse(query))
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return JsonError(error, code=404)
-
 if __name__ == '__main__':
     app.run()
