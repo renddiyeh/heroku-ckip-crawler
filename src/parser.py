@@ -6,9 +6,9 @@ base = 'http://sunlight.iis.sinica.edu.tw'
 first = '/cgi-bin/text.cgi'
 second = '/uwextract/show.php?type=tag&id='
 
-def parseTag(tag):
+def parseTerm(tag):
     split=tag.split('(')
-    return {'word': split[0], 'tag': split[1][:-1]}
+    return {'term': split[0], 'tag': split[1][:-1]}
 
 def getID(query):
     r = requests.post(base + first, data={'query': query.encode('big5')})
@@ -23,7 +23,7 @@ def getTags(id):
 
     pattern = re.compile('[^\s!-]+')
     tags = pattern.findall(result)
-    return map(parseTag, tags)
+    return map(parseTerm, tags)
 
 def parse(query):
     id = getID(query)

@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request
-from flask_json import FlaskJSON, JsonError, json_response, as_json
+from flask_json import FlaskJSON, JsonError, json_response
 
 from src.parser import parse
 
@@ -16,12 +16,11 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'x5txPHff9PWF38xI41v4MS8
 @app.route('/')
 def home():
     query = request.args.get('q')
-
-    return json_response(words = parse(query))
+    return json_response(result = parse(query))
 
 @app.errorhandler(404)
 def page_not_found(error):
     return JsonError(error, code=404)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
