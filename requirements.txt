@@ -17,3 +17,4 @@ mock
 gunicorn
 
 beautifulsoup4
+requests
